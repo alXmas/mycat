@@ -1,0 +1,20 @@
+# Compiled binaries
+mycat
+*.out
+
+# Object files
+*.o
+
+# Debug files
+*.dSYM/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
