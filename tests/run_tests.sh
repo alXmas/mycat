@@ -3,8 +3,23 @@
 # Exit immediately if a command exits with a non-zero status
 set -euo pipefail
 
-BUILD_DIR="build"
-TEST_DIR="test_artifacts"
+# Visual terminal colors
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+# Get the directory where this script lives, guaranteeing stable relative paths
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Define paths relative to the script location
+MYCAT_EXEC="$SCRIPT_DIR/build/mycat"
+TEST_DIR="$SCRIPT_DIR/test_artifacts"
+
+# Alternative: If running inside CTest, look for the binary in the current folder
+if [ ! -f "$MYCAT_EXEC" ] && [ -f "./mycat" ]; then
+    MYCAT_EXEC="./mycat"
+fi
 
 echo -e "${BLUE}==> 1. Setting up test files...${NC}"
 mkdir -p "$TEST_DIR"
