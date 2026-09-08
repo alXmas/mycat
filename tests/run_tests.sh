@@ -9,16 +9,19 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-# Get the directory where this script lives, guaranteeing stable relative paths
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Get the directory where this script lives for reliable relative paths
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
 
-# Define paths relative to the script location
-MYCAT_EXEC="$SCRIPT_DIR/build/mycat"
+# 1. READ ARGUMENT: Use $1 if provided; otherwise, fall back to default path
+MYCAT_EXEC="${1:-$SCRIPT_DIR/build/mycat}"
 TEST_DIR="$SCRIPT_DIR/test_artifacts"
 
-# Alternative: If running inside CTest, look for the binary in the current folder
-if [ ! -f "$MYCAT_EXEC" ] && [ -f "./mycat" ]; then
-    MYCAT_EXEC="./mycat"
+echo -e "${BLUE}==> Using target binary: ${MYCAT_EXEC}${NC}"
+
+# Ensure the targeted executable actually exists before running tests
+if [ ! -f "$MYCAT_EXEC" ]; then
+    echo -e "${RED}Error: Executable not found at '$MYCAT_EXEC'. Build your project first!${NC}"
+    exit 1
 fi
 
 echo -e "${BLUE}==> 1. Setting up test files...${NC}"

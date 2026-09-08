@@ -10,3 +10,10 @@ add_executable(mycat mycat.c)
 
 target_compile_options(mycat PRIVATE -Wall -Wextra -Wpedantic -Werror)
 
+
+include(CTest)
+
+add_test(
+  NAME run_functional_bash_tests 
+  COMMAND ${BASH_PROGRAM} "${CMAKE_CURRENT_SOURCE_DIR}/run_tests.sh"
+)
