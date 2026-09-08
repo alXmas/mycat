@@ -15,6 +15,6 @@ find_program(BASH_PROGRAM bash REQUIRED)
 
 add_test(
   NAME run_functional_bash_tests 
-  COMMAND ${BASH_PROGRAM} "${CMAKE_CURRENT_SOURCE_DIR}/run_test.sh" "$<TARGET_FILE:mycat>"
+  COMMAND ${BASH_PROGRAM} "${CMAKE_CURRENT_SOURCE_DIR}/tests/run_tests.sh" "$<TARGET_FILE:mycat>"
 )
 
