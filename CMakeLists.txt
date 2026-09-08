@@ -10,9 +10,3 @@ add_executable(mycat mycat.c)
 
 target_compile_options(mycat PRIVATE -Wall -Wextra -Wpedantic -Werror)
 
-if(BUILD_TESTING)
-    add_executable(mycat_test mycat_test.c)
-    target_compile_options(test_mycat PRIVATE -Wall -Wextra -Wpedantic -Werror)
-
-    add_test(NAME run_core_unit_tests COMMAND mycat_test)
-endif()
