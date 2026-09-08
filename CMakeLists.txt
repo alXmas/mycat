@@ -8,3 +8,5 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 add_executable(mycat mycat.c)
 
+target_compile_options(mycat PRIVATE -Wall -Wextra -Wpedantic -Werror)
+

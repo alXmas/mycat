@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     int file_count = 1;
 
     while (file_count < argc) {
-      if (read_file(argv[file_count]) == EXIT_SUCCESS) {
+      if (read_file(argv[file_count]) != EXIT_SUCCESS) {
         result = EXIT_FAILURE;
       }
       file_count++;
