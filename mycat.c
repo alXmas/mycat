@@ -5,15 +5,22 @@ int read_file(const char *file_name);
 int read_stdin(void);
 
 int main(int argc, char *argv[]) {
+  int result = EXIT_SUCCESS;
+
+
   if (argc == 1) {
     return read_stdin();
   } else if (argc >= 2) {
     int file_count = 1;
 
     while (file_count < argc) {
-      read_file(argv[file_count]);
+      if (read_file(argv[file_count]) == 1) {
+        result = EXIT_FAILURE;
+      }
       file_count++;
+
     }
+    return result;
   }
 }
 
