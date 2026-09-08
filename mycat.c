@@ -1,27 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
-  int ch;
+void read_file(char *file_name);
+void read_stdin();
 
+int main(int argc, char *argv[]) {
   if (argc == 1) {
-    while ((ch = getchar()) != EOF) {
-      putchar(ch);
-    }
+    read_stdin();
   } else if (argc == 2) {
-    FILE *file = fopen(argv[1], "r");
-    if (file == NULL) {
-        perror("Error opening file");
-        return EXIT_FAILURE;
-    } else {
-      while ((ch = fgetc(file)) != EOF) {
-        putchar(ch);
-      }
-    }
-    fclose(file);
+    read_file(argv[1]);
   } else {
-    printf("Too meny arcuments");
+    printf("Too meny arguments");
   }
 
-    return 0; 
+  return EXIT_SUCCESS;
+}
+
+void read_stdin() {
+  int ch;
+
+  while ((ch = getchar()) != EOF) {
+    putchar(ch);
+  }
+}
+
+void read_file(char *file_name) {
+  FILE *file = fopen(file_name, "r");
+  int ch;
+
+  if (file == NULL) {
+    fprintf(stderr, "Error while try open file\n");
+  } else {
+    while ((ch = fgetc(file)) != EOF) {
+      putchar(ch);
+    }
+  }
+  fclose(file);
 }
