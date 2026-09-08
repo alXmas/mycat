@@ -10,12 +10,10 @@ int main(int argc, char *argv[]) {
   } else if (argc >= 2) {
     int file_count = 1;
 
-    while (file_count >= argc) {
+    while (file_count < argc) {
       read_file(argv[file_count]);
       file_count++;
     }
-
-    return read_file(argv[1]);
   }
 }
 
