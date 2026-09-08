@@ -48,17 +48,17 @@ run_assertion() {
 echo -e "${BLUE}==> 2. Running functional test cases...${NC}"
 
 # Test Case 1: Single file reading
-$MYCAT_EXEC "$TEST_DIR/file1.txt" > "$TEST_DIR/out_mycat_1.txt"
+"$MYCAT_EXEC" "$TEST_DIR/file1.txt" > "$TEST_DIR/out_mycat_1.txt"
 cat "$TEST_DIR/file1.txt" > "$TEST_DIR/out_sys_1.txt"
 run_assertion "Single file parsing" "$TEST_DIR/out_mycat_1.txt" "$TEST_DIR/out_sys_1.txt"
 
 # Test Case 2: Multi-file concatenation
-$MYCAT_EXEC "$TEST_DIR/file1.txt" "$TEST_DIR/file2.txt" > "$TEST_DIR/out_mycat_2.txt"
+"$MYCAT_EXEC" "$TEST_DIR/file1.txt" "$TEST_DIR/file2.txt" > "$TEST_DIR/out_mycat_2.txt"
 cat "$TEST_DIR/file1.txt" "$TEST_DIR/file2.txt" > "$TEST_DIR/out_sys_2.txt"
 run_assertion "Multiple file concatenation" "$TEST_DIR/out_mycat_2.txt" "$TEST_DIR/out_sys_2.txt"
 
 # Test Case 3: Standard Input Stream (Piping data)
-echo "Piped content input test" | $MYCAT_EXEC > "$TEST_DIR/out_mycat_3.txt"
+echo "Piped content input test" | "$MYCAT_EXEC" > "$TEST_DIR/out_mycat_3.txt"
 echo "Piped content input test" | cat > "$TEST_DIR/out_sys_3.txt"
 run_assertion "Stdin stream piping" "$TEST_DIR/out_mycat_3.txt" "$TEST_DIR/out_sys_3.txt"
 

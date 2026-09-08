@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
 
-# 2. Define the project name and set the language to C
 project(MyCat LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
@@ -10,10 +9,12 @@ add_executable(mycat mycat.c)
 
 target_compile_options(mycat PRIVATE -Wall -Wextra -Wpedantic -Werror)
 
-
 include(CTest)
+
+find_program(BASH_PROGRAM bash REQUIRED)
 
 add_test(
   NAME run_functional_bash_tests 
-  COMMAND ${BASH_PROGRAM} "${CMAKE_CURRENT_SOURCE_DIR}/run_tests.sh"
+  COMMAND ${BASH_PROGRAM} "${CMAKE_CURRENT_SOURCE_DIR}/run_test.sh" "$<TARGET_FILE:mycat>"
 )
+
