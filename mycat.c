@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int read_file(char *file_name);
-int read_stdin();
+int read_file(const char *file_name);
+int read_stdin(void);
 
 int main(int argc, char *argv[]) {
   if (argc == 1) {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
   } else if (argc == 2) {
     return read_file(argv[1]);
   } else {
-    fprintf(stderr,  "Too meny arguments");
+    fprintf(stderr,  "Too meny arguments\n");
     return EXIT_FAILURE;
   }
 }
@@ -25,12 +25,12 @@ int read_stdin() {
   return EXIT_SUCCESS;
 }
 
-int read_file(char *file_name) {
+int read_file(const char *file_name) {
   FILE *file = fopen(file_name, "r");
   int ch;
 
   if (file == NULL) {
-    fprintf(stderr, "Error while try open file");
+    fprintf(stderr, "Error while try open file\n");
     return EXIT_FAILURE;
   } else {
     while ((ch = fgetc(file)) != EOF) {
