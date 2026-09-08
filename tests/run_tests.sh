@@ -3,31 +3,10 @@
 # Exit immediately if a command exits with a non-zero status
 set -euo pipefail
 
-# Visual terminal colors
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-BLUE='\033[0;34m'
-NC='\033[0m'
-
 BUILD_DIR="build"
 TEST_DIR="test_artifacts"
 
-echo -e "${BLUE}==> 1. Compiling MyCat program via CMake...${NC}"
-mkdir -p "$BUILD_DIR"
-cd "$BUILD_DIR"
-cmake .. > /dev/null
-cmake --build .
-cd ..
-
-# Determine where the executable was built
-if [ -f "$BUILD_DIR/mycat" ]; then
-    MYCAT_EXEC="./$BUILD_DIR/mycat"
-else
-    echo -e "${RED}Error: mycat executable not found inside build directory.${NC}"
-    exit 1
-fi
-
-echo -e "${BLUE}==> 2. Setting up test files...${NC}"
+echo -e "${BLUE}==> 1. Setting up test files...${NC}"
 mkdir -p "$TEST_DIR"
 echo "Hello, world!" > "$TEST_DIR/file1.txt"
 echo -e "Line 1\nLine 2\nLine 3" > "$TEST_DIR/file2.txt"
@@ -48,7 +27,7 @@ run_assertion() {
     fi
 }
 
-echo -e "${BLUE}==> 3. Running functional test cases...${NC}"
+echo -e "${BLUE}==> 2. Running functional test cases...${NC}"
 
 # Test Case 1: Single file reading
 $MYCAT_EXEC "$TEST_DIR/file1.txt" > "$TEST_DIR/out_mycat_1.txt"
