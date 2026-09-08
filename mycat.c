@@ -7,15 +7,19 @@ int read_stdin(void);
 int main(int argc, char *argv[]) {
   if (argc == 1) {
     return read_stdin();
-  } else if (argc == 2) {
+  } else if (argc >= 2) {
+    int file_count = 1;
+
+    while (file_count >= argc) {
+      read_file(argv[file_count]);
+      file_count++;
+    }
+
     return read_file(argv[1]);
-  } else {
-    fprintf(stderr,  "Too meny arguments\n");
-    return EXIT_FAILURE;
   }
 }
 
-int read_stdin() {
+int read_stdin(void) {
   int ch;
 
   while ((ch = getchar()) != EOF) {
