@@ -7,7 +7,6 @@ int read_stdin(void);
 int main(int argc, char *argv[]) {
   int result = EXIT_SUCCESS;
 
-
   if (argc == 1) {
     return read_stdin();
   } else if (argc >= 2) {

@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/xmas/code/mycat/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
