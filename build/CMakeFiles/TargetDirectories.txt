@@ -1,3 +1,0 @@
-/home/xmas/code/mycat/build/CMakeFiles/mycat.dir
-/home/xmas/code/mycat/build/CMakeFiles/edit_cache.dir
-/home/xmas/code/mycat/build/CMakeFiles/rebuild_cache.dir

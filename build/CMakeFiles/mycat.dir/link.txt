@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/mycat.dir/link.d CMakeFiles/mycat.dir/mycat.c.o -o mycat

@@ -18,3 +18,4 @@ mycat
 .DS_Store
 Thumbs.db
 
+build/
