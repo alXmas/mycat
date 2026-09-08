@@ -3,8 +3,8 @@
 int main(int argc, char *argv[]) {
   int ch;
 
-  while ((ch = getchar()) != EOF && ch != '\n') {
-    printf("char read  = %c, ASCII: %d\n", ch, ch);
+  while ((ch = getchar()) != EOF) {
+    putchar(ch);
   }
   return 0; 
 }
